@@ -787,9 +787,9 @@ public class MarkdownProcessor {
 //        markup.replaceAll("(\\*\\*|__)(?=\\S)(.+?[*_]*)(?<=\\S)\\1", "<strong>$2</strong>");
 //        markup.replaceAll("(\\*|_)(?=\\S)(.+?)(?<=\\S)\\1", "<em>$2</em>");
 
-        markup.replaceAll("(?=\\s?)(\\*\\*|\\_\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
-        markup.replaceAll("(?=\\s?)(\\*|\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<em>$2</em>");
-        markup.replaceAll("(?=\\s?)(\\*|\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
+        markup.replaceAll("(?=\\s?)(\\*\\*|\\_\\_)([^\\*\\*|\\_\\_]*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
+        markup.replaceAll("(?=\\s?)(\\*|\\_)([^\\*\\*|\\_\\_]*)(\\1)(?=\\W|\\s|$)", "<em>$2</em>");
+        markup.replaceAll("(?=\\s?)(\\*|\\_)([^\\*\\*|\\_\\_]*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
         return markup;
     }
 
