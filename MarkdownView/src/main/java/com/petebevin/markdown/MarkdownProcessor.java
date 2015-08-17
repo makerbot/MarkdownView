@@ -151,7 +151,7 @@ public class MarkdownProcessor {
         doCodeBlocks(text);
         doBlockQuotes(text);
 
-        hashHTMLBlocks(text);
+        //hashHTMLBlocks(text);
 
         return formParagraphs(text);
     }
@@ -784,8 +784,12 @@ public class MarkdownProcessor {
     }
 
     private TextEditor doItalicsAndBold(TextEditor markup) {
-        markup.replaceAll("(\\*\\*|__)(?=\\S)(.+?[*_]*)(?<=\\S)\\1", "<strong>$2</strong>");
-        markup.replaceAll("(\\*|_)(?=\\S)(.+?)(?<=\\S)\\1", "<em>$2</em>");
+//        markup.replaceAll("(\\*\\*|__)(?=\\S)(.+?[*_]*)(?<=\\S)\\1", "<strong>$2</strong>");
+//        markup.replaceAll("(\\*|_)(?=\\S)(.+?)(?<=\\S)\\1", "<em>$2</em>");
+
+        markup.replaceAll("(?=\\s?)(\\*\\*|\\_\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
+        markup.replaceAll("(?=\\s?)(\\*|\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<em>$2</em>");
+        markup.replaceAll("(?=\\s?)(\\*|\\_)(\\S*)(\\1)(?=\\W|\\s|$)", "<strong>$2</strong>");
         return markup;
     }
 
